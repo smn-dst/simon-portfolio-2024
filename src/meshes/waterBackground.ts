@@ -110,6 +110,7 @@ function initWater() {
 
   // Initialiser les shaders smooth et readWaterLevel
   let smoothShader: THREE.ShaderMaterial;
+  
   smoothShader = gpuCompute.createShaderMaterial(smoothFragmentShader, { smoothTexture: { value: null } });
   readWaterLevelShader = gpuCompute.createShaderMaterial(readWaterLevelFragmentShader, {
     point1: { value: new THREE.Vector2() },

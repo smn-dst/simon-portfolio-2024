@@ -1,52 +1,13 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "index.html",
-        "use": "@vercel/static-build"
-      },
-      {
-        "src": "about.html",
-        "use": "@vercel/static-build"
-      },
-      {
-        "src": "agori.html",
-        "use": "@vercel/static-build"
-      },
-      {
-        "src": "artdam.html",
-        "use": "@vercel/static-build"
-      },
-      {
-        "src": "bryte.html",
-        "use": "@vercel/static-build"
-      },
-      {
-        "src": "opteven.html",
-        "use": "@vercel/static-build"
-      },
-      {
-        "src": "projects.html",
-        "use": "@vercel/static-build"
-      },
-      {
-        "src": "proxinnov.html",
-        "use": "@vercel/static-build"
-      },
-      {
-        "src": "solware.html",
-        "use": "@vercel/static-build"
-      }
-    ],
-    "routes": [
-      { "src": "/", "dest": "/index.html" },
-      { "src": "/about", "dest": "/about.html" },
-      { "src": "/agori", "dest": "/agori.html" },
-      { "src": "/artdam", "dest": "/artdam.html" },
-      { "src": "/bryte", "dest": "/bryte.html" },
-      { "src": "/opteven", "dest": "/opteven.html" },
-      { "src": "/projects", "dest": "/projects.html" },
-      { "src": "/proxinnov", "dest": "/proxinnov.html" },
-      { "src": "/solware", "dest": "/solware.html" }
-    ]
-  }
+"rewrites": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/agori", "dest": "/agori.html" },
+    { "src": "/artdam", "dest": "/artdam.html" },
+    { "src": "/bryte", "dest": "/bryte.html" },
+    { "src": "/opteven", "dest": "/opteven.html" },
+    { "src": "/projects", "dest": "/projects.html" },
+    { "src": "/proxinnov", "dest": "/proxinnov.html" },
+    { "src": "/solware", "dest": "/solware.html" }
+]
+}

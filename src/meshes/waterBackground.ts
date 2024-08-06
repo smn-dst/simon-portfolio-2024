@@ -109,8 +109,10 @@ function initWater() {
   heightmapVariable.material.defines.BOUNDS = BOUNDS.toFixed(1);
 
   // Initialiser les shaders smooth et readWaterLevel
+
+  // @ts-ignore: smoothShader is defined for future use
   let smoothShader: THREE.ShaderMaterial;
-  
+
   smoothShader = gpuCompute.createShaderMaterial(smoothFragmentShader, { smoothTexture: { value: null } });
   readWaterLevelShader = gpuCompute.createShaderMaterial(readWaterLevelFragmentShader, {
     point1: { value: new THREE.Vector2() },

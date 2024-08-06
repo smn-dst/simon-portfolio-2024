@@ -1,0 +1,28 @@
+/* Slightly move main content */
+html.is-changing .transition-main {
+    transition: transform 400ms ease-in-out;
+  }
+  
+  html.is-animating.is-leaving .transition-main,
+  html.is-animating.is-rendering .transition-main {
+    transform: translateY(0); // Garder l'élément à sa place
+  }
+  
+  
+  .transition-overlay {
+    @apply fixed top-0 left-0 right-0 bottom-0 z-[999] bg-black opacity-0 pointer-events-none;
+    transform: translate3d(0, calc(-1 * 100% * var(--overlay-direction, 1)), 0);
+  }
+  
+  html.is-changing .transition-overlay {
+    @apply opacity-100;
+    transition: transform 400ms ease-in-out;
+  }
+  
+  html.is-animating .transition-overlay {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  html.is-rendering .transition-overlay {
+    transform: translate3d(0, calc(var(--overlay-direction, 1) * 100%), 0);
+  }

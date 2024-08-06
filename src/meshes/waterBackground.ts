@@ -9,12 +9,10 @@ import waterVertexShader from '../shaders/waterVertexShader.glsl';
 
 const WIDTH = 180;
 const BOUNDS = 612;
-const BOUNDS_HALF = BOUNDS * 0.5;
 
 let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
 let gpuCompute: GPUComputationRenderer;
 let heightmapVariable: any;
-let smoothShader: THREE.ShaderMaterial;
 let readWaterLevelShader: THREE.ShaderMaterial;
 let waterUniforms: any;
 let waterMesh: THREE.Mesh;
@@ -111,6 +109,7 @@ function initWater() {
   heightmapVariable.material.defines.BOUNDS = BOUNDS.toFixed(1);
 
   // Initialiser les shaders smooth et readWaterLevel
+  let smoothShader: THREE.ShaderMaterial;
   smoothShader = gpuCompute.createShaderMaterial(smoothFragmentShader, { smoothTexture: { value: null } });
   readWaterLevelShader = gpuCompute.createShaderMaterial(readWaterLevelFragmentShader, {
     point1: { value: new THREE.Vector2() },

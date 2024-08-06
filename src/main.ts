@@ -32,12 +32,8 @@ export const initPage = () => {
 initPage();
 
 function splitType() {
-  // Utiliser Splitting.js pour ajouter des éléments révélables
-  splt({
-    reveal: true,
-  });
+  splt({ reveal: true });
 
-  // Animer les éléments révélables avec anime.js
   anime({
     targets: ".reveal",
     translateY: ["100%", 0],
@@ -50,58 +46,48 @@ function splitType() {
 }
 
 function initScrollImages() {
-  const projects = document.querySelector<HTMLElement>("[data-page='projects']");
+  const projects = document.querySelector("[data-page='projects']");
 
   if (projects) {
-    const revealContainers = document.querySelectorAll<HTMLElement>(
-      "[data-page='projects'] .section-projects .reveal-img"
-    );
-
+    const revealContainers = document.querySelectorAll("[data-page='projects'] .section-projects .reveal-img");
+    
     if (revealContainers.length === 0) {
       console.error("No elements with class 'reveal-img' found.");
       return;
     }
 
-    gsap.utils.toArray(revealContainers).forEach((container: HTMLElement) => {
-      const image = container.querySelector<HTMLElement>(
-        ".section-projects .reveal-img img"
-      );
-      if (!image) {
+    gsap.utils.toArray(revealContainers).forEach((container) => {
+      const img = (container as HTMLElement).querySelector<HTMLElement>(".section-projects .reveal-img img");
+      if (!img) {
         console.error("No image found in container:", container);
         return;
       }
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: container as gsap.DOMTarget,
-          start: "top 92%", // Adjust as necessary
+          trigger: container as HTMLElement,
+          start: "top 92%", 
           toggleActions: "play none none reverse",
         },
       });
 
-      tl.set(container, { opacity: 1 });
-      tl.from(container, { duration: 0.65, xPercent: 0 });
-      tl.from(image, {
-        duration: 0.65,
-        xPercent: 45,
-        scale: 1.4,
-        delay: -0.65,
-      });
+      tl.set(container as HTMLElement, { opacity: 1 });
+      tl.from(container as HTMLElement, { duration: 0.65, xPercent: 0 });
+      tl.from(img, { duration: 0.65, xPercent: 45, scale: 1.4, delay: -0.65 });
     });
   }
 }
 
 function applyImageEffectsSolware() {
-  const solwarePage = document.querySelector<HTMLElement>("[data-page='solware']");
-
+  const solwarePage = document.querySelector("[data-page='solware']");
   if (solwarePage) {
-    const imageContainer = solwarePage.querySelector<HTMLElement>(".main-image");
-    const image = solwarePage.querySelector<HTMLElement>(".main-image video");
-    const overlay = solwarePage.querySelector<HTMLElement>(".overlay-img");
+    const imageContainer = solwarePage.querySelector(".main-image");
+    const image = solwarePage.querySelector(".main-image video");
+    const overlay = solwarePage.querySelector(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: solwarePage as gsap.DOMTarget,
+        trigger: solwarePage,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -109,48 +95,31 @@ function applyImageEffectsSolware() {
           const progress = self.progress;
           const scale = 1 - 0.6 * progress;
           const borderRadius = 200 * progress;
-          gsap.set([imageContainer, overlay, image], {
-            scale: scale,
-            borderRadius: `${borderRadius}px`,
-            y: `${50 * progress}px`,
-          });
+          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
         },
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
-      const img = container.querySelector<HTMLElement>('img');
-    
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container as gsap.DOMTarget,
-          scrub: true,
-          pin: false,
-        }
-      });
-    
-      tl.fromTo(img, {
-        yPercent: -20,
-        ease: 'none'
-      }, {
-        yPercent: 20,
-        ease: 'none'
-      });
+    gsap.utils.toArray('.image-container').forEach((container) => {
+      const img = (container as HTMLElement).querySelector('img');
+      if (img) {
+        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
+        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+      }
     });
   }
 }
 
 function applyImageEffectsProxinnov() {
-  const proxinnovPage = document.querySelector<HTMLElement>("[data-page='proxinnov']");
-
+  const proxinnovPage = document.querySelector("[data-page='proxinnov']");
   if (proxinnovPage) {
-    const imageContainer = proxinnovPage.querySelector<HTMLElement>(".main-image");
-    const image = proxinnovPage.querySelector<HTMLElement>(".main-image video");
-    const overlay = proxinnovPage.querySelector<HTMLElement>(".overlay-img");
+    const imageContainer = proxinnovPage.querySelector(".main-image");
+    const image = proxinnovPage.querySelector(".main-image video");
+    const overlay = proxinnovPage.querySelector(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: proxinnovPage as gsap.DOMTarget,
+        trigger: proxinnovPage,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -158,48 +127,31 @@ function applyImageEffectsProxinnov() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], {
-            scale: scale,
-            borderRadius: `${borderRadius}px`,
-            y: `${50 * progress}px`,
-          });
+          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
         },
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
-      const img = container.querySelector<HTMLElement>('img');
-    
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container as gsap.DOMTarget,
-          scrub: true,
-          pin: false,
-        }
-      });
-    
-      tl.fromTo(img, {
-        yPercent: -20,
-        ease: 'none'
-      }, {
-        yPercent: 20,
-        ease: 'none'
-      });
+    gsap.utils.toArray('.image-container').forEach((container) => {
+      const img = (container as HTMLElement).querySelector('img');
+      if (img) {
+        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
+        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+      }
     });
   }
 }
 
 function applyImageEffectsBryte() {
-  const brytePage = document.querySelector<HTMLElement>("[data-page='bryte']");
-
+  const brytePage = document.querySelector("[data-page='bryte']");
   if (brytePage) {
-    const imageContainer = brytePage.querySelector<HTMLElement>(".main-image");
-    const image = brytePage.querySelector<HTMLElement>(".main-image video");
-    const overlay = brytePage.querySelector<HTMLElement>(".overlay-img");
+    const imageContainer = brytePage.querySelector(".main-image");
+    const image = brytePage.querySelector(".main-image video");
+    const overlay = brytePage.querySelector(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: brytePage as gsap.DOMTarget,
+        trigger: brytePage,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -207,49 +159,31 @@ function applyImageEffectsBryte() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], {
-            scale: scale,
-            borderRadius: `${borderRadius}px`,
-            y: `${50 * progress}px`,
-          });
+          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
         },
       },
     });
 
-
-    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
-      const img = container.querySelector<HTMLElement>('img');
-    
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container as gsap.DOMTarget,
-          scrub: true,
-          pin: false,
-        }
-      });
-    
-      tl.fromTo(img, {
-        yPercent: -20,
-        ease: 'none'
-      }, {
-        yPercent: 20,
-        ease: 'none'
-      });
+    gsap.utils.toArray('.image-container').forEach((container) => {
+      const img = (container as HTMLElement).querySelector('img');
+      if (img) {
+        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
+        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+      }
     });
   }
 }
 
 function applyImageEffectsAgori() {
-  const agoriPage = document.querySelector<HTMLElement>("[data-page='agori']");
-
+  const agoriPage = document.querySelector("[data-page='agori']");
   if (agoriPage) {
-    const imageContainer = agoriPage.querySelector<HTMLElement>(".main-image");
-    const image = agoriPage.querySelector<HTMLElement>(".main-image video");
-    const overlay = agoriPage.querySelector<HTMLElement>(".overlay-img");
+    const imageContainer = agoriPage.querySelector(".main-image");
+    const image = agoriPage.querySelector(".main-image video");
+    const overlay = agoriPage.querySelector(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: agoriPage as gsap.DOMTarget,
+        trigger: agoriPage,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -257,49 +191,31 @@ function applyImageEffectsAgori() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], {
-            scale: scale,
-            borderRadius: `${borderRadius}px`,
-            y: `${50 * progress}px`,
-          });
+          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
         },
       },
     });
 
-
-    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
-      const img = container.querySelector<HTMLElement>('img');
-    
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container as gsap.DOMTarget,
-          scrub: true,
-          pin: false,
-        }
-      });
-    
-      tl.fromTo(img, {
-        yPercent: -20,
-        ease: 'none'
-      }, {
-        yPercent: 20,
-        ease: 'none'
-      });
+    gsap.utils.toArray('.image-container').forEach((container) => {
+      const img = (container as HTMLElement).querySelector('img');
+      if (img) {
+        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
+        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+      }
     });
   }
 }
 
 function applyImageEffectsArtdam() {
-  const artdamPage = document.querySelector<HTMLElement>("[data-page='artdam']");
-
+  const artdamPage = document.querySelector("[data-page='artdam']");
   if (artdamPage) {
-    const imageContainer = artdamPage.querySelector<HTMLElement>(".main-image");
-    const image = artdamPage.querySelector<HTMLElement>(".main-image video");
-    const overlay = artdamPage.querySelector<HTMLElement>(".overlay-img");
+    const imageContainer = artdamPage.querySelector(".main-image");
+    const image = artdamPage.querySelector(".main-image video");
+    const overlay = artdamPage.querySelector(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: artdamPage as gsap.DOMTarget,
+        trigger: artdamPage,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -307,49 +223,31 @@ function applyImageEffectsArtdam() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], {
-            scale: scale,
-            borderRadius: `${borderRadius}px`,
-            y: `${50 * progress}px`,
-          });
+          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
         },
       },
     });
 
-
-    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
-      const img = container.querySelector<HTMLElement>('img');
-    
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container as gsap.DOMTarget,
-          scrub: true,
-          pin: false,
-        }
-      });
-    
-      tl.fromTo(img, {
-        yPercent: -20,
-        ease: 'none'
-      }, {
-        yPercent: 20,
-        ease: 'none'
-      });
+    gsap.utils.toArray('.image-container').forEach((container) => {
+      const img = (container as HTMLElement).querySelector('img');
+      if (img) {
+        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
+        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+      }
     });
   }
 }
 
 function applyImageEffectsOpteven() {
-  const optevenPage = document.querySelector<HTMLElement>("[data-page='opteven']");
-
+  const optevenPage = document.querySelector("[data-page='opteven']");
   if (optevenPage) {
-    const imageContainer = optevenPage.querySelector<HTMLElement>(".main-image");
-    const image = optevenPage.querySelector<HTMLElement>(".main-image video");
-    const overlay = optevenPage.querySelector<HTMLElement>(".overlay-img");
+    const imageContainer = optevenPage.querySelector(".main-image");
+    const image = optevenPage.querySelector(".main-image video");
+    const overlay = optevenPage.querySelector(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: optevenPage as gsap.DOMTarget,
+        trigger: optevenPage,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -357,34 +255,17 @@ function applyImageEffectsOpteven() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], {
-            scale: scale,
-            borderRadius: `${borderRadius}px`,
-            y: `${50 * progress}px`,
-          });
+          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
         },
       },
     });
 
-
-    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
-      const img = container.querySelector<HTMLElement>('img');
-    
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container as gsap.DOMTarget,
-          scrub: true,
-          pin: false,
-        }
-      });
-    
-      tl.fromTo(img, {
-        yPercent: -20,
-        ease: 'none'
-      }, {
-        yPercent: 20,
-        ease: 'none'
-      });
+    gsap.utils.toArray('.image-container').forEach((container) => {
+      const img = (container as HTMLElement).querySelector('img');
+      if (img) {
+        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
+        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+      }
     });
   }
 }

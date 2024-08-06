@@ -1,6 +1,10 @@
-declare module 'img';
-declare module 'meshes';
-declare module 'shaders';
-declare module 'styles';
+declare module '*.webp';
+declare module '*.mov';
+declare module '*.ts';
+declare module '*.glsl';
+declare module '*.scss';
+declare module '*.css';
+declare module '*.woff2';
+declare module '*.woff';
 declare module 'spltjs';
 declare module 'animejs';

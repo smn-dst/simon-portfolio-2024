@@ -19,7 +19,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": ["./node_modules/@types", "./src"]
   },
-  "include": ["./src/**/*", "./declarations.d.ts"]
+  "include": ["src/**/*"]
 }

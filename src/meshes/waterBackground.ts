@@ -11,14 +11,14 @@ const WIDTH = 180;
 const BOUNDS = 612;
 const BOUNDS_HALF = BOUNDS * 0.5;
 
-let camera, scene, renderer;
-let gpuCompute;
-let heightmapVariable;
-let smoothShader;
-let readWaterLevelShader;
-let waterUniforms;
-let waterMesh;
-let meshRay;
+let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
+let gpuCompute: GPUComputationRenderer;
+let heightmapVariable: any;
+let smoothShader: THREE.ShaderMaterial;
+let readWaterLevelShader: THREE.ShaderMaterial;
+let waterUniforms: any;
+let waterMesh: THREE.Mesh;
+let meshRay: THREE.Mesh;
 let mouseMoved = false;
 const mouseCoords = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
@@ -125,11 +125,11 @@ function initWater() {
   }
 }
 
-function fillTexture(texture) {
+function fillTexture(texture: any) {
   const waterMaxHeight = 10;
   const simplex = new SimplexNoise();
 
-  function noise(x, y) {
+  function noise(x: number, y: number) {
     let multR = waterMaxHeight;
     let mult = 0.025;
     let r = 0;
@@ -158,12 +158,12 @@ function fillTexture(texture) {
   }
 }
 
-function onPointerMove(event) {
+function onPointerMove(event: PointerEvent) {
   if (event.isPrimary === false) return;
   setMouseCoords(event.clientX, event.clientY);
 }
 
-function setMouseCoords(x, y) {
+function setMouseCoords(x: number, y: number) {
   mouseCoords.set((x / renderer.domElement.clientWidth) * 2 - 1, -(y / renderer.domElement.clientHeight) * 2 + 1);
   mouseMoved = true;
 }

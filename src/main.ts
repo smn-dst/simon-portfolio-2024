@@ -24,7 +24,7 @@ export const initPage = () => {
   applyImageEffectsArtdam();
   applyImageEffectsOpteven();
 
-  const waterContainer = document.querySelector("#container");
+  const waterContainer = document.querySelector<HTMLElement>("#container");
   if (waterContainer) {
     init(waterContainer);
   }
@@ -50,10 +50,10 @@ function splitType() {
 }
 
 function initScrollImages() {
-  const projects = document.querySelector("[data-page='projects']");
+  const projects = document.querySelector<HTMLElement>("[data-page='projects']");
 
   if (projects) {
-    const revealContainers = document.querySelectorAll(
+    const revealContainers = document.querySelectorAll<HTMLElement>(
       "[data-page='projects'] .section-projects .reveal-img"
     );
 
@@ -62,8 +62,8 @@ function initScrollImages() {
       return;
     }
 
-    gsap.utils.toArray(revealContainers).forEach((container) => {
-      const image = container.querySelectorAll(
+    gsap.utils.toArray(revealContainers).forEach((container: HTMLElement) => {
+      const image = container.querySelector<HTMLElement>(
         ".section-projects .reveal-img img"
       );
       if (!image) {
@@ -73,7 +73,7 @@ function initScrollImages() {
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: container,
+          trigger: container as gsap.DOMTarget,
           start: "top 92%", // Adjust as necessary
           toggleActions: "play none none reverse",
         },
@@ -92,16 +92,16 @@ function initScrollImages() {
 }
 
 function applyImageEffectsSolware() {
-  const solwarePage = document.querySelector("[data-page='solware']");
+  const solwarePage = document.querySelector<HTMLElement>("[data-page='solware']");
 
   if (solwarePage) {
-    const imageContainer = solwarePage.querySelector(".main-image");
-    const image = solwarePage.querySelector(".main-image video");
-    const overlay = solwarePage.querySelector(".overlay-img");
+    const imageContainer = solwarePage.querySelector<HTMLElement>(".main-image");
+    const image = solwarePage.querySelector<HTMLElement>(".main-image video");
+    const overlay = solwarePage.querySelector<HTMLElement>(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: solwarePage,
+        trigger: solwarePage as gsap.DOMTarget,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -118,12 +118,12 @@ function applyImageEffectsSolware() {
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach(container => {
-      const img = container.querySelector('img');
+    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
+      const img = container.querySelector<HTMLElement>('img');
     
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: container,
+          trigger: container as gsap.DOMTarget,
           scrub: true,
           pin: false,
         }
@@ -141,16 +141,16 @@ function applyImageEffectsSolware() {
 }
 
 function applyImageEffectsProxinnov() {
-  const proxinnovPage = document.querySelector("[data-page='proxinnov']");
+  const proxinnovPage = document.querySelector<HTMLElement>("[data-page='proxinnov']");
 
   if (proxinnovPage) {
-    const imageContainer = proxinnovPage.querySelector(".main-image");
-    const image = proxinnovPage.querySelector(".main-image video");
-    const overlay = proxinnovPage.querySelector(".overlay-img");
+    const imageContainer = proxinnovPage.querySelector<HTMLElement>(".main-image");
+    const image = proxinnovPage.querySelector<HTMLElement>(".main-image video");
+    const overlay = proxinnovPage.querySelector<HTMLElement>(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: proxinnovPage,
+        trigger: proxinnovPage as gsap.DOMTarget,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -167,12 +167,12 @@ function applyImageEffectsProxinnov() {
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach(container => {
-      const img = container.querySelector('img');
+    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
+      const img = container.querySelector<HTMLElement>('img');
     
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: container,
+          trigger: container as gsap.DOMTarget,
           scrub: true,
           pin: false,
         }
@@ -190,16 +190,16 @@ function applyImageEffectsProxinnov() {
 }
 
 function applyImageEffectsBryte() {
-  const brytePage = document.querySelector("[data-page='bryte']");
+  const brytePage = document.querySelector<HTMLElement>("[data-page='bryte']");
 
   if (brytePage) {
-    const imageContainer = brytePage.querySelector(".main-image");
-    const image = brytePage.querySelector(".main-image video");
-    const overlay = brytePage.querySelector(".overlay-img");
+    const imageContainer = brytePage.querySelector<HTMLElement>(".main-image");
+    const image = brytePage.querySelector<HTMLElement>(".main-image video");
+    const overlay = brytePage.querySelector<HTMLElement>(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: brytePage,
+        trigger: brytePage as gsap.DOMTarget,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -217,12 +217,12 @@ function applyImageEffectsBryte() {
     });
 
 
-    gsap.utils.toArray('.image-container').forEach(container => {
-      const img = container.querySelector('img');
+    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
+      const img = container.querySelector<HTMLElement>('img');
     
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: container,
+          trigger: container as gsap.DOMTarget,
           scrub: true,
           pin: false,
         }
@@ -240,16 +240,16 @@ function applyImageEffectsBryte() {
 }
 
 function applyImageEffectsAgori() {
-  const agoriPage = document.querySelector("[data-page='agori']");
+  const agoriPage = document.querySelector<HTMLElement>("[data-page='agori']");
 
   if (agoriPage) {
-    const imageContainer = agoriPage.querySelector(".main-image");
-    const image = agoriPage.querySelector(".main-image video");
-    const overlay = agoriPage.querySelector(".overlay-img");
+    const imageContainer = agoriPage.querySelector<HTMLElement>(".main-image");
+    const image = agoriPage.querySelector<HTMLElement>(".main-image video");
+    const overlay = agoriPage.querySelector<HTMLElement>(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: agoriPage,
+        trigger: agoriPage as gsap.DOMTarget,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -267,12 +267,12 @@ function applyImageEffectsAgori() {
     });
 
 
-    gsap.utils.toArray('.image-container').forEach(container => {
-      const img = container.querySelector('img');
+    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
+      const img = container.querySelector<HTMLElement>('img');
     
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: container,
+          trigger: container as gsap.DOMTarget,
           scrub: true,
           pin: false,
         }
@@ -290,16 +290,16 @@ function applyImageEffectsAgori() {
 }
 
 function applyImageEffectsArtdam() {
-  const artdamPage = document.querySelector("[data-page='artdam']");
+  const artdamPage = document.querySelector<HTMLElement>("[data-page='artdam']");
 
   if (artdamPage) {
-    const imageContainer = artdamPage.querySelector(".main-image");
-    const image = artdamPage.querySelector(".main-image video");
-    const overlay = artdamPage.querySelector(".overlay-img");
+    const imageContainer = artdamPage.querySelector<HTMLElement>(".main-image");
+    const image = artdamPage.querySelector<HTMLElement>(".main-image video");
+    const overlay = artdamPage.querySelector<HTMLElement>(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: artdamPage,
+        trigger: artdamPage as gsap.DOMTarget,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -317,12 +317,12 @@ function applyImageEffectsArtdam() {
     });
 
 
-    gsap.utils.toArray('.image-container').forEach(container => {
-      const img = container.querySelector('img');
+    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
+      const img = container.querySelector<HTMLElement>('img');
     
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: container,
+          trigger: container as gsap.DOMTarget,
           scrub: true,
           pin: false,
         }
@@ -340,16 +340,16 @@ function applyImageEffectsArtdam() {
 }
 
 function applyImageEffectsOpteven() {
-  const optevenPage = document.querySelector("[data-page='opteven']");
+  const optevenPage = document.querySelector<HTMLElement>("[data-page='opteven']");
 
   if (optevenPage) {
-    const imageContainer = optevenPage.querySelector(".main-image");
-    const image = optevenPage.querySelector(".main-image video");
-    const overlay = optevenPage.querySelector(".overlay-img");
+    const imageContainer = optevenPage.querySelector<HTMLElement>(".main-image");
+    const image = optevenPage.querySelector<HTMLElement>(".main-image video");
+    const overlay = optevenPage.querySelector<HTMLElement>(".overlay-img");
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
-        trigger: optevenPage,
+        trigger: optevenPage as gsap.DOMTarget,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -367,12 +367,12 @@ function applyImageEffectsOpteven() {
     });
 
 
-    gsap.utils.toArray('.image-container').forEach(container => {
-      const img = container.querySelector('img');
+    gsap.utils.toArray('.image-container').forEach((container: HTMLElement) => {
+      const img = container.querySelector<HTMLElement>('img');
     
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: container,
+          trigger: container as gsap.DOMTarget,
           scrub: true,
           pin: false,
         }

@@ -82,8 +82,13 @@ function applyImageEffectsSolware() {
   const solwarePage = document.querySelector("[data-page='solware']");
   if (solwarePage) {
     const imageContainer = solwarePage.querySelector(".main-image");
-    const image = solwarePage.querySelector(".main-image video");
+    const image = solwarePage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = solwarePage.querySelector(".overlay-img");
+
+    if (image) {
+      image.load();
+      image.play();
+    }
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
@@ -114,8 +119,13 @@ function applyImageEffectsProxinnov() {
   const proxinnovPage = document.querySelector("[data-page='proxinnov']");
   if (proxinnovPage) {
     const imageContainer = proxinnovPage.querySelector(".main-image");
-    const image = proxinnovPage.querySelector(".main-image video");
+    const image = proxinnovPage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = proxinnovPage.querySelector(".overlay-img");
+
+    if (image) {
+      image.load();
+      image.play();
+    }
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
@@ -146,8 +156,13 @@ function applyImageEffectsBryte() {
   const brytePage = document.querySelector("[data-page='bryte']");
   if (brytePage) {
     const imageContainer = brytePage.querySelector(".main-image");
-    const image = brytePage.querySelector(".main-image video");
+    const image = brytePage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = brytePage.querySelector(".overlay-img");
+
+    if (image) {
+      image.load();
+      image.play();
+    }
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
@@ -178,8 +193,13 @@ function applyImageEffectsAgori() {
   const agoriPage = document.querySelector("[data-page='agori']");
   if (agoriPage) {
     const imageContainer = agoriPage.querySelector(".main-image");
-    const image = agoriPage.querySelector(".main-image video");
+    const image = agoriPage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = agoriPage.querySelector(".overlay-img");
+
+    if (image) {
+      image.load();
+      image.play();
+    }
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
@@ -210,8 +230,13 @@ function applyImageEffectsArtdam() {
   const artdamPage = document.querySelector("[data-page='artdam']");
   if (artdamPage) {
     const imageContainer = artdamPage.querySelector(".main-image");
-    const image = artdamPage.querySelector(".main-image video");
+    const image = artdamPage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = artdamPage.querySelector(".overlay-img");
+
+    if (image) {
+      image.load();
+      image.play();
+    }
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {
@@ -242,8 +267,13 @@ function applyImageEffectsOpteven() {
   const optevenPage = document.querySelector("[data-page='opteven']");
   if (optevenPage) {
     const imageContainer = optevenPage.querySelector(".main-image");
-    const image = optevenPage.querySelector(".main-image video");
+    const image = optevenPage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = optevenPage.querySelector(".overlay-img");
+
+    if (image) {
+      image.load();
+      image.play();
+    }
 
     gsap.to([imageContainer, overlay, image], {
       scrollTrigger: {

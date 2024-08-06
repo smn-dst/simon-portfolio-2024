@@ -6,7 +6,7 @@ declare module '*.svg';
 declare module '*.bmp';
 declare module '*.tiff';
 declare module '*.webp';
-declare module '*.mov';
+declare module '*.mp4';
 declare module '*.ts';
 declare module '*.glsl';
 declare module '*.scss';

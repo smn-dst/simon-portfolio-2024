@@ -14,8 +14,8 @@
     <section class="introduction h-screen">
       <div class="relative image-container">
         <div class="main-image">
-          <video loop muted autoplay playsinline>
-            <source class="relative w-full h-screen" src="./src/img/agori.mov" type="video/mp4">
+          <video loop muted autoplay preload="auto" id="videoagori">
+            <source class="relative w-full h-screen" src="./src/img/agori.mp4" type="video/mp4">
           </video>
           <div class="overlay-img"></div>
         </div>
@@ -187,7 +187,7 @@
     <section class="credits">
       <h2>tous droits réservés ©2024</h2>
     </section>
-
+    
     <script type="module" src="src/transition.ts"></script>
     <script type="module" src="src/main.ts"></script>
     <script type="module" src="src/smoothScroll.ts"></script>

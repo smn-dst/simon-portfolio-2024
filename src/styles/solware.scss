@@ -21,6 +21,7 @@ body {
           video {
             @apply transform !origin-center object-cover h-screen;
             will-change: transform, border-radius;
+            -webkit-playsinline: true;
           }
 
           .overlay-img {
@@ -99,7 +100,11 @@ body {
             position: absolute;
             transition: transform 0.4s ease;
             transform: rotate(45deg);
-            -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            rotate: -35deg;
+            
+            &.safari {
+              -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            }
           }
 
           .icon:nth-child(2) {
@@ -141,7 +146,7 @@ body {
           }
 
           p {
-            @apply font-body font-bold text-[16px] leading-[20px] lg:text-[22px] lg:leading-[22px];
+            @apply font-body font-bold text-[16px] leading-[20px] lg:text-[19px] lg:leading-[20px];
           }
         }
 
@@ -209,7 +214,11 @@ body {
             position: absolute;
             transition: transform 0.4s ease;
             transform: rotate(45deg);
-            -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            rotate: -35deg;
+            
+            &.safari {
+              -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            }
           }
 
           .icon:nth-child(2) {

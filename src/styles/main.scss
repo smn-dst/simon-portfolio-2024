@@ -24,6 +24,12 @@ body {
       @apply w-full h-full fixed top-0 left-0 z-[-1];
   
       section {
+        &.introduction {
+          h1 {
+            @apply stroke-[1px] lg:stroke-[3px];
+            stroke-color: black;
+          }
+        }
         &.networks {
           .link {
             height: 30px;
@@ -83,7 +89,11 @@ body {
             position: absolute;
             transition: transform 0.4s ease;
             transform: rotate(45deg);
-            -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            rotate: -35deg;
+            
+            &.safari {
+              -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            }
           }
     
           .icon:nth-child(2) {
@@ -176,7 +186,11 @@ body {
             position: absolute;
             transition: transform 0.4s ease;
             transform: rotate(45deg);
-            -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            rotate: -35deg;
+            
+            &.safari {
+              -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            }
           }
     
           .icon:nth-child(2) {

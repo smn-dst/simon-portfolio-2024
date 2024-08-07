@@ -12,7 +12,7 @@
       <section class="introduction h-screen">
         <div class="relative image-container">
           <div class="main-image">
-            <video loop muted autoplay preload="auto" id="videosolware">
+            <video loop muted autoplay playsinline preload="auto" id="videosolware">
               <source
                 class="relative w-full h-screen"
                 src="./src/img/solware.mp4"
@@ -54,7 +54,7 @@
                   />
                 </svg>
                 <svg
-                  class="icon rotate-[-45deg]"
+                  class="icon"
                   width="24"
                   height="24"
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,7 @@
                   />
                 </svg>
                 <svg
-                  class="icon rotate-[-45deg]"
+                  class="icon"
                   width="24"
                   height="24"
                   xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@
                   />
                 </svg>
                 <svg
-                  class="icon rotate-[-45deg]"
+                  class="icon"
                   width="24"
                   height="24"
                   xmlns="http://www.w3.org/2000/svg"
@@ -188,15 +188,6 @@
         <h2>tous droits réservés ©2024</h2>
       </section>
 
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const video = document.getElementById('videosolware');
-          if (video) {
-            video.load();
-            video.play();
-          }
-        });
-      </script>
       <script type="module" src="src/transition.ts"></script>
       <script type="module" src="src/main.ts"></script>
       <script type="module" src="src/smoothScroll.ts"></script>

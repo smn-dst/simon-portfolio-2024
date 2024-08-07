@@ -2,8 +2,10 @@ body {
   .about {
     #container {
       @apply w-full h-full fixed top-0 left-0 z-0;
+      
       section {
         &.introduction-about {
+          @apply flex flex-col justify-between p-[20px] h-screen lg:ml-[40px] pb-[100px] md:ml-[50px] md:m-[50px];
           .link {
             height: 30px;
             align-items: center;
@@ -61,7 +63,12 @@ body {
             display: block;
             position: absolute;
             transition: transform 0.4s ease;
-            rotate: 45deg;
+            transform: rotate(45deg);
+            rotate: -35deg;
+
+            &.safari {
+              -webkit-transform: rotate(0deg); /* Préfixe pour Safari */
+            }
           }
     
           .icon:nth-child(2) {
@@ -97,7 +104,7 @@ body {
           .title-about {
             @apply flex h-full items-end;
             h1 {
-              @apply text-black font-title font-bold leading-[45px] text-[45px] lg:leading-[50px] lg:text-[50px] xl:text-[70px] xl:leading-[70px] lg:w-[90%] flex;
+              @apply text-black font-title font-bold leading-[38px] text-[38px] lg:leading-[50px] lg:text-[50px] xl:text-[70px] xl:leading-[70px] lg:w-[90%] flex;
             }
           }
         }

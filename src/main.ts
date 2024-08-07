@@ -10,6 +10,7 @@ import anime from "animejs/lib/anime.es.js";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { log } from "three/examples/jsm/nodes/Nodes.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,9 @@ export const initPage = () => {
   applyImageEffectsAgori();
   applyImageEffectsArtdam();
   applyImageEffectsOpteven();
+
+  initIconsIndex();
+  initIconsAbout();
 
   const waterContainer = document.querySelector<HTMLElement>("#container");
   if (waterContainer) {
@@ -49,15 +53,19 @@ function initScrollImages() {
   const projects = document.querySelector("[data-page='projects']");
 
   if (projects) {
-    const revealContainers = document.querySelectorAll("[data-page='projects'] .section-projects .reveal-img");
-    
+    const revealContainers = document.querySelectorAll(
+      "[data-page='projects'] .section-projects .reveal-img"
+    );
+
     if (revealContainers.length === 0) {
       console.error("No elements with class 'reveal-img' found.");
       return;
     }
 
     gsap.utils.toArray(revealContainers).forEach((container) => {
-      const img = (container as HTMLElement).querySelector<HTMLElement>(".section-projects .reveal-img img");
+      const img = (container as HTMLElement).querySelector<HTMLElement>(
+        ".section-projects .reveal-img img"
+      );
       if (!img) {
         console.error("No image found in container:", container);
         return;
@@ -66,7 +74,7 @@ function initScrollImages() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container as HTMLElement,
-          start: "top 92%", 
+          start: "top 92%",
           toggleActions: "play none none reverse",
         },
       });
@@ -75,6 +83,16 @@ function initScrollImages() {
       tl.from(container as HTMLElement, { duration: 0.65, xPercent: 0 });
       tl.from(img, { duration: 0.65, xPercent: 45, scale: 1.4, delay: -0.65 });
     });
+
+    // Ajout de la classe safari pour les éléments link-icon dans Opteven
+    const icons = projects.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        icon.classList.add("safari");
+      }
+    });
   }
 }
 
@@ -82,7 +100,8 @@ function applyImageEffectsSolware() {
   const solwarePage = document.querySelector("[data-page='solware']");
   if (solwarePage) {
     const imageContainer = solwarePage.querySelector(".main-image");
-    const image = solwarePage.querySelector<HTMLVideoElement>(".main-image video");
+    const image =
+      solwarePage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = solwarePage.querySelector(".overlay-img");
 
     if (image) {
@@ -100,16 +119,40 @@ function applyImageEffectsSolware() {
           const progress = self.progress;
           const scale = 1 - 0.6 * progress;
           const borderRadius = 200 * progress;
-          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
+          gsap.set([imageContainer, overlay, image], {
+            scale: scale,
+            borderRadius: `${borderRadius}px`,
+            y: `${50 * progress}px`,
+          });
         },
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach((container) => {
-      const img = (container as HTMLElement).querySelector('img');
+    // Ajout de la classe safari pour les éléments link-icon dans Solware
+    const icons = solwarePage.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        icon.classList.add("safari");
+      }
+    });
+
+    gsap.utils.toArray(".image-container").forEach((container) => {
+      const img = (container as HTMLElement).querySelector("img");
       if (img) {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
-        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container as HTMLElement,
+            scrub: true,
+            pin: false,
+          },
+        });
+        tl.fromTo(
+          img,
+          { yPercent: -20, ease: "none" },
+          { yPercent: 20, ease: "none" }
+        );
       }
     });
   }
@@ -119,7 +162,8 @@ function applyImageEffectsProxinnov() {
   const proxinnovPage = document.querySelector("[data-page='proxinnov']");
   if (proxinnovPage) {
     const imageContainer = proxinnovPage.querySelector(".main-image");
-    const image = proxinnovPage.querySelector<HTMLVideoElement>(".main-image video");
+    const image =
+      proxinnovPage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = proxinnovPage.querySelector(".overlay-img");
 
     if (image) {
@@ -137,16 +181,40 @@ function applyImageEffectsProxinnov() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
+          gsap.set([imageContainer, overlay, image], {
+            scale: scale,
+            borderRadius: `${borderRadius}px`,
+            y: `${50 * progress}px`,
+          });
         },
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach((container) => {
-      const img = (container as HTMLElement).querySelector('img');
+    // Ajout de la classe safari pour les éléments link-icon dans Proxinnov
+    const icons = proxinnovPage.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        icon.classList.add("safari");
+      }
+    });
+
+    gsap.utils.toArray(".image-container").forEach((container) => {
+      const img = (container as HTMLElement).querySelector("img");
       if (img) {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
-        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container as HTMLElement,
+            scrub: true,
+            pin: false,
+          },
+        });
+        tl.fromTo(
+          img,
+          { yPercent: -20, ease: "none" },
+          { yPercent: 20, ease: "none" }
+        );
       }
     });
   }
@@ -156,7 +224,8 @@ function applyImageEffectsBryte() {
   const brytePage = document.querySelector("[data-page='bryte']");
   if (brytePage) {
     const imageContainer = brytePage.querySelector(".main-image");
-    const image = brytePage.querySelector<HTMLVideoElement>(".main-image video");
+    const image =
+      brytePage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = brytePage.querySelector(".overlay-img");
 
     if (image) {
@@ -174,16 +243,40 @@ function applyImageEffectsBryte() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
+          gsap.set([imageContainer, overlay, image], {
+            scale: scale,
+            borderRadius: `${borderRadius}px`,
+            y: `${50 * progress}px`,
+          });
         },
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach((container) => {
-      const img = (container as HTMLElement).querySelector('img');
+    // Ajout de la classe safari pour les éléments link-icon dans Bryte
+    const icons = brytePage.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        icon.classList.add("safari");
+      }
+    });
+
+    gsap.utils.toArray(".image-container").forEach((container) => {
+      const img = (container as HTMLElement).querySelector("img");
       if (img) {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
-        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container as HTMLElement,
+            scrub: true,
+            pin: false,
+          },
+        });
+        tl.fromTo(
+          img,
+          { yPercent: -20, ease: "none" },
+          { yPercent: 20, ease: "none" }
+        );
       }
     });
   }
@@ -193,7 +286,8 @@ function applyImageEffectsAgori() {
   const agoriPage = document.querySelector("[data-page='agori']");
   if (agoriPage) {
     const imageContainer = agoriPage.querySelector(".main-image");
-    const image = agoriPage.querySelector<HTMLVideoElement>(".main-image video");
+    const image =
+      agoriPage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = agoriPage.querySelector(".overlay-img");
 
     if (image) {
@@ -211,16 +305,40 @@ function applyImageEffectsAgori() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
+          gsap.set([imageContainer, overlay, image], {
+            scale: scale,
+            borderRadius: `${borderRadius}px`,
+            y: `${50 * progress}px`,
+          });
         },
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach((container) => {
-      const img = (container as HTMLElement).querySelector('img');
+    // Ajout de la classe safari pour les éléments link-icon dans Agori
+    const icons = agoriPage.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        icon.classList.add("safari");
+      }
+    });
+
+    gsap.utils.toArray(".image-container").forEach((container) => {
+      const img = (container as HTMLElement).querySelector("img");
       if (img) {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
-        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container as HTMLElement,
+            scrub: true,
+            pin: false,
+          },
+        });
+        tl.fromTo(
+          img,
+          { yPercent: -20, ease: "none" },
+          { yPercent: 20, ease: "none" }
+        );
       }
     });
   }
@@ -230,7 +348,8 @@ function applyImageEffectsArtdam() {
   const artdamPage = document.querySelector("[data-page='artdam']");
   if (artdamPage) {
     const imageContainer = artdamPage.querySelector(".main-image");
-    const image = artdamPage.querySelector<HTMLVideoElement>(".main-image video");
+    const image =
+      artdamPage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = artdamPage.querySelector(".overlay-img");
 
     if (image) {
@@ -248,16 +367,40 @@ function applyImageEffectsArtdam() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
+          gsap.set([imageContainer, overlay, image], {
+            scale: scale,
+            borderRadius: `${borderRadius}px`,
+            y: `${50 * progress}px`,
+          });
         },
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach((container) => {
-      const img = (container as HTMLElement).querySelector('img');
+    // Ajout de la classe safari pour les éléments link-icon dans Artdam
+    const icons = artdamPage.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        icon.classList.add("safari");
+      }
+    });
+
+    gsap.utils.toArray(".image-container").forEach((container) => {
+      const img = (container as HTMLElement).querySelector("img");
       if (img) {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
-        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container as HTMLElement,
+            scrub: true,
+            pin: false,
+          },
+        });
+        tl.fromTo(
+          img,
+          { yPercent: -20, ease: "none" },
+          { yPercent: 20, ease: "none" }
+        );
       }
     });
   }
@@ -267,7 +410,8 @@ function applyImageEffectsOpteven() {
   const optevenPage = document.querySelector("[data-page='opteven']");
   if (optevenPage) {
     const imageContainer = optevenPage.querySelector(".main-image");
-    const image = optevenPage.querySelector<HTMLVideoElement>(".main-image video");
+    const image =
+      optevenPage.querySelector<HTMLVideoElement>(".main-image video");
     const overlay = optevenPage.querySelector(".overlay-img");
 
     if (image) {
@@ -285,16 +429,74 @@ function applyImageEffectsOpteven() {
           const progress = self.progress;
           const scale = 1 - 0.4 * progress;
           const borderRadius = 150 * progress;
-          gsap.set([imageContainer, overlay, image], { scale: scale, borderRadius: `${borderRadius}px`, y: `${50 * progress}px` });
+          gsap.set([imageContainer, overlay, image], {
+            scale: scale,
+            borderRadius: `${borderRadius}px`,
+            y: `${50 * progress}px`,
+          });
         },
       },
     });
 
-    gsap.utils.toArray('.image-container').forEach((container) => {
-      const img = (container as HTMLElement).querySelector('img');
+    // Ajout de la classe safari pour les éléments link-icon dans Opteven
+    const icons = optevenPage.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        icon.classList.add("safari");
+      }
+    });
+
+    gsap.utils.toArray(".image-container").forEach((container) => {
+      const img = (container as HTMLElement).querySelector("img");
       if (img) {
-        const tl = gsap.timeline({ scrollTrigger: { trigger: container as HTMLElement, scrub: true, pin: false } });
-        tl.fromTo(img, { yPercent: -20, ease: 'none' }, { yPercent: 20, ease: 'none' });
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container as HTMLElement,
+            scrub: true,
+            pin: false,
+          },
+        });
+        tl.fromTo(
+          img,
+          { yPercent: -20, ease: "none" },
+          { yPercent: 20, ease: "none" }
+        );
+      }
+    });
+  }
+}
+
+function initIconsIndex() {
+  const index = document.querySelector("[data-page='main']");
+
+  if (index) {
+    // Ajout de la classe safari pour les éléments link-icon dans about
+    const icons = index.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    console.log(icons);
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        console.log('class in safari');
+        icon.classList.add("safari");
+      }
+    });
+  }
+}
+
+function initIconsAbout() {
+  const about = document.querySelector("[data-page='about']");
+
+  if (about) {
+    // Ajout de la classe safari pour les éléments link-icon dans about
+    const icons = about.querySelectorAll<HTMLElement>(
+      ".btn .btn-project .icon"
+    );
+    icons.forEach((icon) => {
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        icon.classList.add("safari");
       }
     });
   }

@@ -5,7 +5,7 @@ body {
       
       section {
         &.introduction-about {
-          @apply flex flex-col justify-between p-[20px] h-screen lg:ml-[40px] pb-[100px] md:ml-[50px] md:m-[50px];
+          @apply flex flex-col fixed justify-between p-[20px] h-screen lg:ml-[40px] pb-[100px] md:ml-[50px] md:m-[50px];
           .link {
             height: 30px;
             align-items: center;

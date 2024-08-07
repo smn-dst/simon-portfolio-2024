@@ -2,7 +2,7 @@ body {
   @apply bg-[#DBDAD8];
   .projects {
     .introduction {
-      @apply flex flex-col justify-between p-[20px] lg:p-0;
+      @apply flex flex-col justify-between p-[20px] lg:p-0 h-screen pb-[100px] fixed lg:ml-[50px] md:m-[50px];
     }
     #container {
       @apply w-full h-full fixed top-0 left-0 z-0;

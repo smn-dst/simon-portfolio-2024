@@ -10,7 +10,6 @@ import anime from "animejs/lib/anime.es.js";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { log } from "three/examples/jsm/nodes/Nodes.js";
 
 gsap.registerPlugin(ScrollTrigger);
 

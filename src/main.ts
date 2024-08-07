@@ -25,9 +25,6 @@ export const initPage = () => {
   applyImageEffectsArtdam();
   applyImageEffectsOpteven();
 
-  initIconsIndex();
-  initIconsAbout();
-
   const waterContainer = document.querySelector<HTMLElement>("#container");
   if (waterContainer) {
     init(waterContainer);
@@ -128,16 +125,6 @@ function applyImageEffectsSolware() {
       },
     });
 
-    // Ajout de la classe safari pour les éléments link-icon dans Solware
-    const icons = solwarePage.querySelectorAll<HTMLElement>(
-      ".btn .btn-project .icon"
-    );
-    icons.forEach((icon) => {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        icon.classList.add("safari");
-      }
-    });
-
     gsap.utils.toArray(".image-container").forEach((container) => {
       const img = (container as HTMLElement).querySelector("img");
       if (img) {
@@ -188,16 +175,6 @@ function applyImageEffectsProxinnov() {
           });
         },
       },
-    });
-
-    // Ajout de la classe safari pour les éléments link-icon dans Proxinnov
-    const icons = proxinnovPage.querySelectorAll<HTMLElement>(
-      ".btn .btn-project .icon"
-    );
-    icons.forEach((icon) => {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        icon.classList.add("safari");
-      }
     });
 
     gsap.utils.toArray(".image-container").forEach((container) => {
@@ -252,16 +229,6 @@ function applyImageEffectsBryte() {
       },
     });
 
-    // Ajout de la classe safari pour les éléments link-icon dans Bryte
-    const icons = brytePage.querySelectorAll<HTMLElement>(
-      ".btn .btn-project .icon"
-    );
-    icons.forEach((icon) => {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        icon.classList.add("safari");
-      }
-    });
-
     gsap.utils.toArray(".image-container").forEach((container) => {
       const img = (container as HTMLElement).querySelector("img");
       if (img) {
@@ -312,16 +279,6 @@ function applyImageEffectsAgori() {
           });
         },
       },
-    });
-
-    // Ajout de la classe safari pour les éléments link-icon dans Agori
-    const icons = agoriPage.querySelectorAll<HTMLElement>(
-      ".btn .btn-project .icon"
-    );
-    icons.forEach((icon) => {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        icon.classList.add("safari");
-      }
     });
 
     gsap.utils.toArray(".image-container").forEach((container) => {
@@ -376,16 +333,6 @@ function applyImageEffectsArtdam() {
       },
     });
 
-    // Ajout de la classe safari pour les éléments link-icon dans Artdam
-    const icons = artdamPage.querySelectorAll<HTMLElement>(
-      ".btn .btn-project .icon"
-    );
-    icons.forEach((icon) => {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        icon.classList.add("safari");
-      }
-    });
-
     gsap.utils.toArray(".image-container").forEach((container) => {
       const img = (container as HTMLElement).querySelector("img");
       if (img) {
@@ -438,16 +385,6 @@ function applyImageEffectsOpteven() {
       },
     });
 
-    // Ajout de la classe safari pour les éléments link-icon dans Opteven
-    const icons = optevenPage.querySelectorAll<HTMLElement>(
-      ".btn .btn-project .icon"
-    );
-    icons.forEach((icon) => {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        icon.classList.add("safari");
-      }
-    });
-
     gsap.utils.toArray(".image-container").forEach((container) => {
       const img = (container as HTMLElement).querySelector("img");
       if (img) {
@@ -463,40 +400,6 @@ function applyImageEffectsOpteven() {
           { yPercent: -20, ease: "none" },
           { yPercent: 20, ease: "none" }
         );
-      }
-    });
-  }
-}
-
-function initIconsIndex() {
-  const index = document.querySelector("[data-page='main']");
-
-  if (index) {
-    // Ajout de la classe safari pour les éléments link-icon dans about
-    const icons = index.querySelectorAll<HTMLElement>(
-      ".btn .btn-project .icon"
-    );
-    console.log(icons);
-    icons.forEach((icon) => {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        console.log('class in safari');
-        icon.classList.add("safari");
-      }
-    });
-  }
-}
-
-function initIconsAbout() {
-  const about = document.querySelector("[data-page='about']");
-
-  if (about) {
-    // Ajout de la classe safari pour les éléments link-icon dans about
-    const icons = about.querySelectorAll<HTMLElement>(
-      ".btn .btn-project .icon"
-    );
-    icons.forEach((icon) => {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-        icon.classList.add("safari");
       }
     });
   }
